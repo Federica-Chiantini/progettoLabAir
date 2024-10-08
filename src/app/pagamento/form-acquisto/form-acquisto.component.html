@@ -1,0 +1,241 @@
+
+  <div>
+<!--form nome e cognome-->
+      <div class="card flex justify-content-center">
+          <p-accordion [activeIndex]="0">
+              <p-accordionTab header="Opzioni di consegna">
+                  <form [formGroup]="UtenteForm">
+                      <div class="row row-cols-1 row-cols-lg-2 mb-3 g-1">
+                          <div class="col">
+                              <input type="text" class="form-control" id="nome" placeholder="Nome" formControlName="nome" [ngClass]="{
+                                'is-invalid':
+                                UtenteForm.get('nome')!.invalid && UtenteForm.get('nome')!.touched,
+                                'is-valid': UtenteForm.get('nome')!.valid && UtenteForm.get('nome')!.touched
+                              }">
+                               <!--msg errore-->
+                               <ng-container *ngIf="UtenteForm.get('nome')!.touched && UtenteForm.get('nome')!.errors">
+                                <div class="text-danger" *ngIf="UtenteForm.get('nome')!.errors">Il nome deve essere lungo almeno 3 caratteri</div></ng-container>
+                              <!--###-->
+                            </div>
+                            <div class="col">
+                              <input type="text" class="form-control" id="cognome" placeholder="Cognome" formControlName="cognome" [ngClass]="{
+                                'is-invalid':
+                                UtenteForm.get('cognome')!.invalid && UtenteForm.get('cognome')!.touched,
+                                'is-valid': UtenteForm.get('cognome')!.valid && UtenteForm.get('cognome')!.touched
+                              }">
+                              <!--msg errore-->
+                               <ng-container *ngIf="UtenteForm.get('cognome')!.touched && UtenteForm.get('cognome')!.errors">
+                                <div class="text-danger" *ngIf="UtenteForm.get('nome')!.errors">Il nome deve essere lungo almeno 4 caratteri</div></ng-container>
+                              <!--###-->
+                            </div>
+                      </div>
+                      <!--##-->
+
+                      <!--form con indirizzo-->
+                      <div class="m-4 border p-2" formGroupName="indirizzo">
+                          <h5 class="text-primary">Indirizzo</h5>
+                          <div class="row row-cols-1 row-cols-md-2 g-1 align-items-end mb-3">
+                            <div class="col col-md-8">
+                              <input
+                                type="text"
+                                id="via"
+                                placeholder="Via e civico"
+                                class="form-control"
+                                formControlName="via"
+                                [ngClass]="{
+                                  'is-invalid':
+                                  indirizzoForm.get('via')!.invalid && indirizzoForm.get('via')!.touched,
+                                  'is-valid': indirizzoForm.get('via')!.valid && indirizzoForm.get('via')!.touched
+                                }"
+                              />
+                            </div>
+                            <div class="col col-md-4">
+                              <input
+                                type="text"
+                                id="cap"
+                                placeholder="cap"
+                                class="form-control"
+                                formControlName="cap"
+                                [ngClass]="{
+                                  'is-invalid':
+                                  indirizzoForm.get('cap')!.invalid && indirizzoForm.get('cap')!.touched,
+                                  'is-valid': indirizzoForm.get('cap')!.valid && indirizzoForm.get('cap')!.touched
+                                }"
+                              />
+                            </div>
+                          </div>
+                          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-1 align-items-end mb-3">
+                            <div class="col col-sm-8 col-md-4">
+                              <input
+                                type="text"
+                                id="citta"
+                                placeholder="citta"
+                                class="form-control"
+                                formControlName="citta"
+                                [ngClass]="{
+                                  'is-invalid':
+                                  indirizzoForm.get('citta')!.invalid && indirizzoForm.get('citta')!.touched,
+                                  'is-valid': indirizzoForm.get('citta')!.valid && indirizzoForm.get('citta')!.touched
+                                }"
+                              />
+                            </div>
+                            <div class="col col-sm-4">
+                              <input
+                                type="text"
+                                id="provincia"
+                                placeholder="provincia"
+                                class="form-control"
+                                formControlName="provincia"
+                                [ngClass]="{
+                                  'is-invalid':
+                                  indirizzoForm.get('provincia')!.invalid && indirizzoForm.get('provincia')!.touched,
+                                  'is-valid': indirizzoForm.get('provincia')!.valid && indirizzoForm.get('provincia')!.touched
+                                }"
+                              />
+                            </div>
+                            <div class="col col-sm-12 col-md-4">
+                              <input
+                                type="text"
+                                id="nazione"
+                                placeholder="nazione"
+                                class="form-control"
+                                formControlName="nazione"
+                              />
+                            </div>
+                          </div>
+                              <!--msg errore-->
+                               <ng-container *ngIf="UtenteForm.get('indirizzo')!.touched && UtenteForm.get('indirizzo')!.invalid">
+                                <div class="text-danger">Compila tutti i campi obbligatori</div></ng-container>
+                              <!--###-->
+                  </div>
+                  <!--##-->
+
+                  <!--form email e tel-->
+                  <div class="row row-cols-1 row-cols-lg-2 g-1 mb-3">
+                      <div class="col">
+                          <input type="email" class="form-control" id="email" placeholder="email" formControlName="email" [ngClass]="{
+                            'is-invalid':
+                            UtenteForm.get('email')!.invalid && UtenteForm.get('email')!.touched,
+                            'is-valid': UtenteForm.get('email')!.valid && UtenteForm.get('email')!.touched
+                          }">
+                          <!--msg errore-->
+                           <ng-container *ngIf="UtenteForm.get('email')!.touched && UtenteForm.get('email')!.errors">
+                            <div class="text-danger" *ngIf="UtenteForm.get('email')!.errors">Inserisci un email corretta</div></ng-container>
+                          <!--###-->
+                        </div>
+                        <div class="col">
+                          <input type="tel" class="form-control" id="tel" placeholder="tel" formControlName="tel" [ngClass]="{
+                            'is-invalid':
+                            UtenteForm.get('tel')!.invalid && UtenteForm.get('tel')!.touched,
+                            'is-valid': UtenteForm.get('tel')!.valid && UtenteForm.get('tel')!.touched
+                          }">
+                          <!--msg errore-->
+                           <ng-container *ngIf="UtenteForm.get('tel')!.touched && UtenteForm.get('tel')!.errors">
+                            <div class="text-danger" *ngIf="UtenteForm.get('tel')!.errors">Inserisci un numero di telefono valido</div></ng-container>
+                          <!--###-->
+                        </div>
+                  </div>
+                  <!--##-->
+
+                  <div class="d-flex justify-content-end">
+                      <button
+                        type="button"
+                        class="btn btn-secondary mt-4 ms-2 fs-5"
+                        style="width: 14vw"
+                        (click)="ApriPagamento()"
+                        [disabled]="UtenteForm.invalid"
+                      >Salva e continua
+                      </button>
+                  </div>
+              </form>
+              </p-accordionTab>
+              
+              <!--sezione pagamento-->
+              <p-accordionTab header="Pagamento" [disabled]="PagamentoChiuso">
+                  <div class="mb-4">
+                      <p-checkbox 
+                      [binary]="true" 
+                      inputId="check"
+                      class="me-1" />
+                      <label for="check">Possiedi una gift card, un voucher o un codice promozionale?</label>
+                  </div>
+
+                  <!--radiobutton-->
+                  <h5>Seleziona un metodo di pagamento:</h5>
+                  <div *ngFor="let category of categories" class="field-checkbox">
+                      <p-radioButton 
+                          [inputId]="category.key"
+                          name="category" 
+                          [value]="category" 
+                          [(ngModel)]="selectedCategory" 
+                          (click)="pagamentoSelezionato(category.name)"/>
+                      <label [for]="category.key" class="ml-2 p-2">
+                          {{ category.name }}
+                      </label>
+                  </div>
+                  <!--##-->
+
+                  <!--form con dati carta-->
+                  <form class="m-4 border p-1 w-75" [formGroup]="PagamentoForm">
+                      <h5 class="text-primary">Aggiungi carta</h5>
+                      <div class="row row-cols-2 row-cols-md-3 g-1 align-items-end mb-3">
+                        <div class="col-12 col-md-6">
+                          <input
+                            type="number"
+                            id="carta"
+                            placeholder="numero carta"
+                            class="form-control"
+                            formControlName="numero" [ngClass]="{
+                              'is-invalid':
+                              PagamentoForm.get('numero')!.invalid && PagamentoForm.get('numero')!.touched,
+                              'is-valid': PagamentoForm.get('numero')!.valid && PagamentoForm.get('numero')!.touched
+                            }">
+                        </div>
+                        <div class="col-6 col-md-3">
+                          <input
+                            type="string"
+                            id="data"
+                            placeholder="MM / AA"
+                            class="form-control"
+                            formControlName="data" [ngClass]="{
+                              'is-invalid':
+                              PagamentoForm.get('data')!.invalid && PagamentoForm.get('data')!.touched,
+                              'is-valid': PagamentoForm.get('data')!.valid && PagamentoForm.get('data')!.touched
+                            }">
+                        </div>
+                        <div class="col-6 col-md-3">
+                          <input
+                            type="number"
+                            id="ccv"
+                            placeholder="CCV"
+                            class="form-control"
+                            formControlName="ccv" [ngClass]="{
+                              'is-invalid':
+                              PagamentoForm.get('ccv')!.invalid && PagamentoForm.get('ccv')!.touched,
+                              'is-valid': PagamentoForm.get('ccv')!.valid && PagamentoForm.get('ccv')!.touched
+                            }">
+                        </div>
+                      </div>
+                              <!--msg errore-->
+                             <ng-container *ngIf="PagamentoForm.touched && PagamentoForm.invalid">
+                              <div class="text-danger" *ngIf="PagamentoForm.invalid">Inserisci in tutti i campi i valori corretti</div></ng-container>
+                              <!--##-->
+              </form>
+              <!--##-->
+
+              <div class="d-flex justify-content-end">
+                  <button
+                    type="button"
+                    class="btn btn-secondary mt-4 ms-2 fs-5"
+                    style="width: 14vw"
+                    [disabled]="PagamentoForm.invalid"
+                    (click)="inviaForm()"
+                  >Invia
+                  </button>
+              </div>
+              </p-accordionTab> 
+              <!--##-->
+          </p-accordion>
+      </div>
+
+  </div>

@@ -1,0 +1,23 @@
+<div class="container mb-5" >
+    <div class="card flex justify-content-center mt-5 mx-auto" style="max-width: 50rem;" *ngIf="elementiACarrello.length > 0">
+        <p-card header="Login">
+            <p class="mb-4 text-center">
+                Scegli se accedere con il tuo account nike.com o effettuare il pagamento tramite ospite
+            </p>
+            <div class="row justify-content-center">
+                <p-button label="Utente loggato" (click)="utenteLoggato()" severity="secondary" class="col-3"/>
+                <p-button label="Continua come ospite" severity="contrast" class="col-3" [routerLink]="['acquista/ospite']" />
+            </div>
+        </p-card>
+    </div>
+
+    <div class="card flex justify-content-center mt-5 mx-auto " style="max-width: 50rem;" *ngIf="elementiACarrello.length == 0"> 
+        <p-card>
+<div class="bg-danger-subtle">
+                <h4 class="mb-4 text-center text-danger">
+                    Nessun prodotto e' presente dentro al carrello.
+                </h4>
+</div>
+        </p-card>
+    </div>
+</div>

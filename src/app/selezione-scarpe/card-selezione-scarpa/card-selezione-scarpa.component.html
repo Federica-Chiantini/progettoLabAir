@@ -1,0 +1,35 @@
+<div
+          class="card"
+          *ngIf="s"
+          (click)="apriDettaglioScarpa(s.id)"
+          style="cursor: pointer"
+        >
+          <div>
+            <div>
+              <img
+                [src]="s.immagine"
+                class="img-fluid rounded-start"
+                [alt]="s.nome"
+              />
+            </div>
+            <div class="col">
+              <div class="card-body">
+                <h4 class="card-title">{{ s.nome }}</h4>
+                <small class="card-text">{{ s.categoria }}</small>
+                <p class="card-text">{{ s.descrizione }}</p>
+                <p class="card-text text-muted" *ngIf="s.nuovo_arrivi">
+                  nuovo arrivo
+                </p>
+                <p class="card-text text-muted" *ngIf="s.best_seller">
+                  best seller
+                </p>
+                <h5 class="card-text mt-1">
+                  {{ s.prezzo | currency : "EUR" }}
+                </h5>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+

@@ -1,0 +1,56 @@
+@media screen and (min-width: 300px) {
+    .grandezzaSconti{
+        font-size: 0.9rem;
+    }
+    
+    .margine{
+        margin-left: 10vw;
+    }
+
+    .icone{
+        font-size: 0.9rem;
+        margin-right: 1vw
+    }
+
+    .spazio{
+        margin-right: 6vw
+    }
+}
+
+@media screen and (min-width: 467px) {
+    .icone{
+        font-size: 1rem;
+    }
+
+    .spazio{
+        margin-right: 0
+    }
+}
+
+@media screen and (min-width: 680px) {
+    .grandezzaSconti{
+        font-size: 1.2rem;
+    }
+    
+    .icone{
+        font-size: 1.1rem;
+    }
+
+    .margine{
+        margin-left: 2vw;
+    }
+}
+
+@media screen and (min-width: 1089px) {
+    .grandezzaSconti{
+        font-size: 1.25rem;
+    }
+    
+    .margine{
+        margin-left: 0;
+    }
+
+    .icone{
+        font-size: 1.3rem;
+    }
+}

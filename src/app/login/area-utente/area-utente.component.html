@@ -1,0 +1,56 @@
+<h2 class="text-center text-warning my-2">Bentornato, {{nome}}</h2>
+<div class="col row row-cols-1 row-cols-md-2 my-4 justify-content-evenly">
+      <!--scheda utente-->
+    <div class="card p-2 col col-md-8 mb-2" style="max-width: 50vw;">
+        <div class="row g-1 justify-content-between">
+          <div class="col-md-3 border p-1">
+            <img src="https://freesvg.org/img/utente-singolo-architet-01r.png" class="img-fluid rounded-start" alt="immagine profilo" style="min-width: 12vw;">
+          </div>
+          <!--nome, recapiti-->
+          <div class="col-md-8 mt-2">
+              <h5 class="card-title mt-1">Nome e cognome</h5>
+              <div class="row g-1">
+                <p class="card-text col">{{ nome !== '' ? nome : 'nome' }}</p>
+                <p class="card-text col">{{ cognome !== '' ? cognome : 'cognome' }}</p>
+              </div>
+              <h5 class="card-title mt-1">Email e telefono</h5>
+              <div class="row g-1">
+                <p class="card-text col">{{ email !== '' ? email : 'email' }}</p>
+                <p class="card-text col">{{ tel !== '' ? tel : 'tel'}}</p>
+              </div>
+          </div>
+        </div>
+        <!--##-->
+        <hr>
+        <!--indirizzo-->
+        <div class="card-body row g-1">
+            <h3 class="text-muted">Indirizzo</h3>
+            <h5 class="card-title mt-1">Via, cap e citta'</h5>
+              <div class="row g-1">
+                <p class="card-text col">{{ via !== '' ? via : 'via' }}</p>
+                <p class="card-text col">{{ cap !== '' ? cap : 'cap' }}</p>
+                <p class="card-text col">{{ citta !== '' ? citta : "citta'" }}</p>
+              </div>
+              <h5 class="card-title mt-1">Provincia e Nazione</h5>
+              <div class="row g-1">
+                <p class="card-text col">{{ provincia !== '' ? provincia : 'provincia' }}</p>
+                <p class="card-text col">{{ nazione !== '' ? nazione : 'nazione' }}</p>
+              </div>
+        </div>
+        <!--##-->
+        <div class="my-2 mx-auto">
+          <button class="btn btn-danger me-1" style="width: 10rem" (click)="logoutUtente()">Logout</button>
+          <button *ngIf="carrello.carrelloScarpe.length > 0" class="btn btn-dark" style="width: 10rem" (click)="pagamento()">Pagamento</button>
+        </div>
+      </div>
+      <!--##-->
+      <div class="col col-md-3 border mb-2" style="max-width: 50vw;">
+        <h3 class="my-2">Riepilogo ordini</h3> 
+<div class="table-responsive">
+<app-riepilogo-ordini></app-riepilogo-ordini>
+</div>
+          <div class="my-1">
+            <p class="text-muted">Vuoi effettuare un nuovo acquisto?</p>
+            <button (click)="vaiACarrello()" class="btn btn-secondary mb-2" style="width: 6rem">Clicca qui</button>
+        </div>
+</div>

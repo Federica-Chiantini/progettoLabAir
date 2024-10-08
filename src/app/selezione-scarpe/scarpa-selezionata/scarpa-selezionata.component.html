@@ -1,0 +1,78 @@
+<div class="row row-cols-1 row-cols-lg-2 pt-2 justify-content-evenly my-1 mb-2" *ngIf="scarpa && galleria">
+<!--galleria scarpe e immagine di copertina-->
+<div class="col col-lg-6 d-flex"> 
+<div class="col me-2">
+            <div class="mb-1">
+                <img [src]="galleria.colori[indiceScarpa].fotoCopertina" [alt]="scarpa.nome" class="img-fluid w-75" (mouseover)="cambiaImmagineGrande(galleria.colori[indiceScarpa].fotoCopertina)">
+            </div>
+            <div *ngFor="let fg of galleria.colori[indiceScarpa].foto" class="mb-1">
+                <img [src]="fg" [alt]="scarpa.nome" class="img-fluid w-75" (mouseover)="cambiaImmagineGrande(fg)">
+            </div>
+            <div class="mb-1" *ngIf="galleria.video">
+                <video [src]="galleria.video" class="img-fluid w-75" (mouseover)="cambiaInVideo()"></video>
+            </div>
+</div>
+
+<div class="col-10" *ngIf="!visualizzaVideo"><img [src]="imgDefault" class="img-fluid"></div>
+    <video class="col-10" *ngIf="visualizzaVideo" autoplay muted><!--video-->
+        <source [src]="galleria.video" type="video/mp4">
+    </video>
+</div>
+<!--##-->
+
+<!--Scheda scarpa-->
+<div class="col-10 col-lg-6">
+<div class="mb-3">
+        <h2>{{scarpa.nome}}</h2>
+        <h3>{{scarpa.categoria}}</h3>
+</div>
+
+<div class="mb-3">
+    <h4>{{scarpa.prezzo | currency : 'EUR'}}</h4>
+</div>
+
+<!--galleria di alcuni colori-->
+<div class="row gx-2 mb-3" *ngIf="galleria.colori.length > 1">
+    <div *ngFor="let fg of galleria.colori, let i = index" class="col-2" >
+        <img [src]="fg.fotoCopertina" [alt]="scarpa.nome" class="img-fluid w-75" (click)="cambiaColoreScarpa(i, fg.fotoCopertina)" style="cursor: pointer;">
+    </div>
+</div>
+<!--##-->
+
+<!--menu a tendina per colori-->
+<select [(ngModel)]="coloreScelto" class="form-select w-50" > 
+
+    <option *ngFor="let colore of scarpa.colori_disponibili" [value]="colore">{{colore}}</option>
+</select>
+<!--##-->
+
+<div class="row gx-5 my-4">
+<h6 class="col me-2">Seleziona la taglia/misura</h6>
+<a href="https://www.nike.com/it/size-fit/scarpe-uomo" class=" col text-muted link-underline link-underline-opacity-0 ms-2">
+<h6>Guida alle taglie e alle misure</h6></a>
+
+<!--taglie scarpe-->
+<div class="row gap-1 justify-content-start py-3">
+<div *ngFor="let s of scarpa.taglie_disponibili" class="col col-md-3 col-lg-2 fs-5 pe-0"><p-button [label]="'EU' + s" size="small" [outlined]="true" severity="secondary"  (click)="selezionaTaglia(s)" [ngClass]="[selezionata ? 'isvalid' : '']"/>
+</div>
+</div>
+</div>
+<!--##-->
+
+    <button class="btn btn-dark btn-lg color-light rounded-4 d-block w-100 p-3" (click)="elementoAggiuntoACarrello(scarpa)" [disabled]="!coloreScelto || !tagliaSelezionata ">Aggiungi al carrello</button>
+    <button class="btn btn-light btn-lg color-dark border border-dark-subtle rounded-4 d-block mt-2 w-100 p-3" disabled>Aggiungi ai preferiti <i class="bi bi-heart"></i></button>
+
+    <!--descrizione-->
+    <div class="container">
+        <p class="mt-2">{{scarpa.descrizione}}</p>
+        <ul>
+            <li><span class="text-muted">Categoria:</span> {{scarpa.categoria}}</li>
+            <li><span class="text-muted">Nuovi arrivi:</span> {{scarpa.nuovo_arrivi === true ? "si" : "no"}}</li>
+        </ul>
+    </div>
+    <!--##-->
+
+</div>
+<!--##-->
+
+</div>

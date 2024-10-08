@@ -1,0 +1,19 @@
+.distanza{
+    margin-bottom: 0.5rem;
+}
+
+.margineDisclaimer{
+    margin-top: 0.7rem;
+}
+
+@media screen and (min-width: 403px) {
+    .distanza{
+        margin-bottom: 0.7rem;
+    }
+}
+
+@media screen and (min-width: 547px) {
+    .distanza{
+        margin-bottom: 1rem;
+    }
+}

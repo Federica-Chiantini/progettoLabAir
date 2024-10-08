@@ -1,0 +1,25 @@
+<div class="container card mt-2 mx-auto p-2" style="width: 70vw;">
+    <div class="row row-cols-1 row-cols-lg-2 justify-content-center">
+    <h2 class="text-center">Pagamento</h2>
+    <!--form dati e pagamento-->
+        <app-form-acquisto class="col-10 col-lg-8 mb-2"></app-form-acquisto>
+        <div class="col-8 col-lg-3">
+            <h3>Nel carrello</h3>
+            <div class="mb-1 mt-3">
+              <!--tabella con pagamento totale-->
+              <app-tabella [prezzo]="totale"></app-tabella>
+                          </div>
+                
+                <h3 class="my-2">Arrivo entro il 24 Sett</h3>
+      
+                <!--card scarpa-->
+                <div *ngFor="let item of carrello.carrelloScarpe">
+                    <div *ngIf="item" class="row g-0 my-3">
+                       <app-card-scarpa-carrello [item]="item"></app-card-scarpa-carrello>
+                    </div>
+                </div>
+                <!--##-->
+        </div>
+      </div>
+</div>
+

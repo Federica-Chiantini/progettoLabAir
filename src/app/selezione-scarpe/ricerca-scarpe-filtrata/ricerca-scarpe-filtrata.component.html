@@ -1,0 +1,25 @@
+<ng-container *ngIf="scarpe.length !== 0">
+    <div *ngIf="chiaveDiRicercaTrovata === false">
+      <div class="col">
+        <h2 class="p-2 text-center">{{ titolo }}({{quantita}})</h2>
+      <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-2">
+        <!--card della singola scarpa-->
+        <app-card-selezione-scarpa class="col mb-3 mx-auto" *ngFor="let scarpa of scarpe" [s]="scarpa"></app-card-selezione-scarpa>
+      </div>
+      </div>
+    </div>
+  
+    <div class="row my-2" *ngIf="chiaveDiRicercaTrovata === true">
+      <div class="col">
+        <h2 class="p-2 text-center">{{ titolo }} {{parametroStringa | titlecase}}({{quantita}})</h2>
+      <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-2">
+        <!--card della singola scarpa cercata per nome-->
+        <app-card-selezione-scarpa class="col mb-3" *ngFor="let scarpa of scarpe | filtraPerNome : { key: parametroStringa! }" [s]="scarpa"></app-card-selezione-scarpa>
+      </div>
+      </div>
+    </div>
+  </ng-container>
+  
+  <div class="my-5" *ngIf="scarpe.length == 0">
+    <p-messages [(value)]="messages" [closable]="false" />
+  </div>

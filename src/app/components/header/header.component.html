@@ -1,0 +1,124 @@
+<div>
+  <!--SEZIONE 1 ICONS E NAV-->
+    <section class="row bg-body-secondary justify-content-between">
+        <div class="col d-none d-sm-flex align-items-center">
+                <h4 class="bi bi-dribbble ms-5" routerLink="/" style="cursor:pointer"></h4>
+                <h4 class="bi bi-person ms-3"  routerLink="/" style="cursor:pointer"></h4>
+        </div>
+        <!--#-->
+        <nav class="col col-md-4 navbar navbar-expand-xl">
+          <div class="container-fluid justify-content-end">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarPrima" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarPrima">
+              <ul class="nav navbar-nav justify-content-end">
+                  <li class="nav-item">
+                    <a class="nav-link border-end" href="#">Trova negozio</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link border-end" data-bs-toggle="dropdown" href="#">Aiuto</a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">Stato ordine</a></li>
+                      <li><a class="dropdown-item" href="#">Spedizione e consegna</a></li>
+                      <li><a class="dropdown-item" href="#">Restituzioni</a></li>
+                      <li><a class="dropdown-item" href="#">Tabella delle taglie e delle misure</a></li>
+                      <li><a class="dropdown-item" href="#">Contattaci</a></li>
+                      <li><a class="dropdown-item" href="#">Informativa sulla privacy</a></li>
+                      <li><a class="dropdown-item" href="#">Condizioni di vendita</a></li>
+                      <li><a class="dropdown-item" href="#">Condizioni d'uso</a></li>
+                      <li><a class="dropdown-item" href="#">Invia feedback</a></li>
+                    </ul>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link border-end" href="#">Unisciti a noi</a>
+                  </li>
+                  <li class="nav-item" *ngIf="!Utente">
+                    <a class="nav-link me-1 text-warning" routerLink="login" style="cursor:pointer">Accedi</a>
+                  </li>
+                  <li class="nav-item" *ngIf="Utente">
+                    <p class="nav-link me-1 text-success" routerLink="area-utente" style="cursor:pointer"><i class="bi bi-person-circle align-items-bottom"></i></p>
+                  </li>
+                </ul>
+              </div>
+          </div>
+        </nav>
+          <!--#-->
+      </section>
+        <!--SEZIONE 2 LOGO NAV E INPUT-->
+      <section class="bg-body-tertiary row justify-content-between p-1 align-items-center position-relative">
+        <div class="col-2 col-md-1 col-lg-2 order-1" style="height:6vh">
+          <img src="../../../assets/images/logo.png" class="h-100" alt="logo" routerLink="/" style="cursor:pointer">
+        </div>
+            <!--#-->
+            <nav class="col-2 col-md-4 col-xl-6 navbar navbar-expand-xl order-3 order-xl-2 gx-2">
+              <div class="container-sm justify-content-end">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSeconda" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                  <ul class="nav justify-content-end collapse navbar-collapse" id="navbarSeconda">
+                      <li class="nav-item">
+                        <a class="nav-link" href="#" (click)="MiniMenuCollapse($event, 'novita')">Novita' e in evidenza</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#" (click)="MiniMenuCollapse($event, 'sesso')">Uomo</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#" (click)="MiniMenuCollapse($event, 'sesso')">Donna</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#" (click)="MiniMenuCollapse($event, 'sesso')" >Bambino</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#" (click)="MiniMenuCollapse($event, 'outlet')">Outlet</a>
+                      </li>
+                    </ul>
+                  </div>
+            </nav>
+            <!--#-->
+            <div class="col-6 col-md-3 col-lg-4 order-2 order-xl-3 margine">
+        <div class="row align-items-center d-flex">
+                  <form class="input-group col" [formGroup]="cercaPerNome" (submit)="iniziaRicerca()"> 
+                      <button type="submit" class="input-group-text"><i class="bi bi-search"></i></button>
+                      <input type="text" class="form-control" placeholder="Cerca" name="input" formControlName="input">
+                  </form>
+                  <div class="col-2 d-flex align-items-center p-0 spazio">
+                    <i class="bi bi-bag me-2 icone" routerLink="carrello" style="cursor: pointer;"></i>
+                    <i class="bi bi-heart icone"></i>
+                    <!--popup carrello-->
+                    <app-carrello-mini></app-carrello-mini>
+                    <!--#-->
+                  </div>
+</div>
+              </div>
+                    <!--menu con categorie, ect-->
+                    <div *ngIf="apriChiudiFinestra.finestraAperta">
+                    <app-navbar-header class="position-absolute top-100 start-0 z-3 bg-body-tertiary border-bottom"></app-navbar-header>
+                    </div>
+                    <!---->
+      </section>
+      <section class="row">
+        <div id="carouselOfferte" class="carousel slide bg-body-secondary" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active p-1">
+                <div class="text-center mx-auto">
+                  <h6 class="grandezzaSconti">SCONTI SPECIALI, sino al 50%!</h6>
+                  <h6 class="grandezzaSconti">Esplora il sito</h6>
+                </div>
+            </div>
+            <div class="carousel-item p-1">
+              <div class="text-center mx-auto">
+                <h6 class="grandezzaSconti">SPEDIZIONE GRATUITA</h6>
+                <h6 class="grandezzaSconti">Per tutti i nostri membri</h6>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+</div>
+
+
+
+
+
+

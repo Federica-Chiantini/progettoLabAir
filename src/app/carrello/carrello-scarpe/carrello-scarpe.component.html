@@ -1,0 +1,46 @@
+<div class="row row-cols-1 row-cols-md-2 mt-3 justify-content-evenly">
+<div class="col">
+    <div class="border p-2">
+        <h3 class="text-warning">Spedizione gratuita per i membri</h3>
+        <p class="text-muted">Diventa Member Nike e approfitta della spedizione rapida e gratuita. <a routerLink="login" class="text-secondary">Unisciti a noi o accedi</a></p>
+    </div>
+
+<ng-container *ngIf="this.carrello.carrelloScarpe.length >0"> <!--card della scarpa a carrello-->   
+    <app-card-scarpa-carrello *ngFor="let s of prodottiACarrello" [cardScarpa]="s" (scarpaDaEliminare)="eliminaScarpa($event)" (quantita)="modificaQuantita($event, s)"></app-card-scarpa-carrello>
+</ng-container>
+
+<ng-container *ngIf="this.carrello.carrelloScarpe.length == 0"> <!--SE non ci sono articoli a carrello-->   
+<div class="mt-4 mb-5" style="min-height: 15rem;">
+         <h3>Carrello</h3>
+         <p>Nel tuo carrello non sono presenti articoli.</p>
+</div>
+</ng-container>
+
+<div class="mt-3" style="min-height: 10rem;">
+    <h3>Preferiti</h3>
+    <p>Vuoi visualizzare i preferiti? <a routerLink="/login" class="text-secondary">Unisciti a noi o Accedi</a></p>
+</div>
+</div>
+
+
+<div class="col-10 col-md-6 col-lg-5">
+    <div class="border">
+        <h2 class="p-2">Riepilogo</h2>
+        <div>
+            <p-accordion>
+                <p-accordionTab header="Hai un codice promozionale?">
+                    <div class="flex">
+                        <input type="text" class="me-2"/>    <p-button label="Invia codice" severity="secondary" size="small"/>
+                    </div>
+                </p-accordionTab>
+            </p-accordion>
+        </div>
+        <!--tabella con totale del prezzo scarpe e spedizione-->
+        <app-tabella [prezzo]="prezzo" [spedizione]="spedizione"></app-tabella>
+          <div class="border-top p-2 ">
+            <button routerLink="/pagamento" class="btn btn-light btn-lg color-dark border border-dark-subtle rounded-4 d-block w-100 p-2 mt-4">Pagamento</button>
+            <button class="btn btn-light btn-lg color-dark border border-dark-subtle rounded-4 d-block mt-2 w-100 p-2 mt-2" disabled>Paypal</button>
+          </div>
+    </div>
+</div>
+</div>

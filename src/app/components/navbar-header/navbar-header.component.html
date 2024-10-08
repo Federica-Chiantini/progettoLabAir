@@ -1,0 +1,248 @@
+ <!--Novita e in evidenza-->
+ <ng-container *ngIf="apriChiudiFinestra.nomeCategoriaMenu === 'novita'">
+    <div class="d-flex justify-content-end col gx-1 py-3" >
+      <ul class="nav col-3">
+        <li class="nav-item ms-4">
+          <strong>In evidenza</strong>
+        </li>
+      <li class="nav-item dropdown-item"> 
+        <a class="nav-link" routerLink="scarpe/nuovi-arrivi" (click)="chiudiMenu()">Nuovi arrivi</a>
+      </li>
+      <li class="nav-item dropdown-item">
+        <a class="nav-link" routerLink="scarpe/best-seller" (click)="chiudiMenu()">Best seller</a>
+      </li>
+      <li class="nav-item dropdown-item">
+        <a class="nav-link" routerLink="scarpe" (click)="chiudiMenu()">Tutti i prodotti</a>
+      </li>
+      <li class="nav-item dropdown-item">
+        <a class="nav-link" href="#">Shop Air</a>
+      </li>
+      <li class="nav-item dropdown-item">
+        <a class="nav-link" href="#">Nike Club</a>
+      </li>
+    </ul>
+        <ul class="nav col-3">
+          <li class="nav-item ms-4">
+            <strong>Scopri lo sport</strong>
+          </li>
+          <li class="nav-item dropdown-item">
+            <a class="nav-link" (click)="chiudiMenuCategoria('Basket')">Basket</a>
+          </li>
+          <li class="nav-item dropdown-item">
+            <a class="nav-link" (click)="chiudiMenuCategoria('Running')">Running</a>
+          </li>
+          <li class="nav-item dropdown-item">
+            <a class="nav-link" (click)="chiudiMenuCategoria('Sneakers')">Sneakers</a>
+          </li>
+          <li class="nav-item dropdown-item">
+            <a class="nav-link" (click)="chiudiMenuCategoria('TrailRunning')">Trail Running</a>
+          </li>
+          <li class="nav-item dropdown-item">
+            <a class="nav-link" (click)="chiudiMenuCategoria('Training')">Training</a>
+          </li>
+    </ul>
+    <ul class="nav col-3">
+      <li class="nav-item ms-4">
+        <strong>Di tendenza</strong>
+      </li>
+      <li class="nav-item dropdown-item">
+        <p>Air Max Home</p>
+      </li>
+      <li class="nav-item dropdown-item">
+        <p>Sneakers</p>
+      </li>
+      <li class="nav-tem dropdown-item">
+        <p>Nike Style</p>
+      </li>
+      <li class="nav-item dropdown-item">
+        <p>Teenager</p>
+      </li>
+      <li class="nav-item dropdown-item">
+        <p>Sostenibilita'</p>
+      </li>
+</ul>
+<ul class="nav col-3">
+    <li class="nav-item ms-4">
+      <strong>Sconti e offerte</strong>
+    </li>
+  <li class="nav-item dropdown-item">
+    <p>Articoli in sconto</p>
+  </li>
+  <li class="nav-item dropdown-item">
+    <p>Personalizza</p>
+  </li>
+  <li class="nav-item dropdown-item">
+    <p>Vintage</p>
+  </li>
+  <li class="nav-item dropdown-item">
+    <p>Offerte</p>
+  </li>
+  <li class="nav-item dropdown-item">
+    <p>Ultima occasione</p>
+  </li>
+</ul>
+  </div>
+  </ng-container>
+   <!--##-->
+
+    <!--Uomo/Donna/Bambini-->
+  <ng-container *ngIf="apriChiudiFinestra.nomeCategoriaMenu === 'sesso'">
+    <div class="d-flex justify-content-end col py-3">
+      <ul class="nav">
+        <li class="nav-item ms-4 col-3">
+          <strong>Scarpe</strong>
+        </li>
+        <li class="nav-item dropdown-item">
+          <p>Tutte</p>
+        </li>
+        <li class="nav-item dropdown-item">
+          <p>Lifestyle</p>
+        </li>
+        <li class="nav-item dropdown-item">
+          <p>Running</p>
+        </li>
+        <li class="nav-item dropdown-item">
+          <p>Calcio</p>
+        </li>
+        <li class="nav-item dropdown-item">
+          <p>Basket</p>
+        </li>
+      </ul>
+        <ul class="nav">
+          <li class="nav-item ms-4">
+            <strong>Abbigliamento</strong>
+          </li>
+          <li class="nav-item dropdown-item">
+            <p>Tutto l'abbigliamento</p>
+          </li>
+          <li class="nav-item dropdown-item">
+            <p>T-shirt</p>
+          </li>
+          <li class="nav-item dropdown-item">
+            <p>Felpe</p>
+          </li>
+          <li class="nav-item dropdown-item">
+            <p>Pantaloni</p>
+          </li>
+          <li class="nav-item dropdown-item">
+            <p>Tute</p>
+          </li>
+    </ul>
+    <ul class="nav">
+      <li class="nav-item ms-4 col-3">
+        <strong>Sport</strong>
+      </li>
+      <li class="nav-item dropdown-item">
+        <p>Corsa</p>
+      </li>
+      <li class="nav-item dropdown-item">
+        <p>Calcio</p>
+      </li>
+      <li class="nav-item dropdown-item">
+        <p>Basket</p>
+      </li>
+      <li class="nav-item dropdown-item">
+        <p>Ginnastica</p>
+      </li>
+      <li class="nav-item dropdown-item">
+        <p>Pallavolo</p>
+      </li>
+</ul>
+<ul class="nav">
+  <li class="nav-item ms-4 col-3">
+    <strong>Accessori</strong>
+  </li>
+  <li class="nav-item dropdown-item">
+    <p>Tutti</p>
+  </li>
+  <li class="nav-item dropdown-item">
+    <p>Borse</p>
+  </li>
+  <li class="nav-item dropdown-item">
+    <p>Copricapi</p>
+  </li>
+  <li class="nav-item dropdown-item">
+    <p>Calze</p>
+  </li>
+  <li class="nav-item dropdown-item">
+    <p>Offerte</p>
+  </li>
+</ul>
+  </div>
+  </ng-container>
+   <!--##-->
+
+   <!--Outlet-->
+  <ng-container *ngIf="apriChiudiFinestra.nomeCategoriaMenu === 'outlet'">
+    <div class="d-flex col py-3">
+      <ul class="nav col-3">
+        <li class="nav-item ms-4 col-3">
+            <strong>Sport</strong>
+          </li>
+          <li class="nav-item dropdown-item">
+            <p>Atletica</p>
+          </li>
+          <li class="nav-item dropdown-item">
+            <p>Ciclismo</p>
+          </li>
+          <li class="nav-item dropdown-item">
+            <p>Fitness</p>
+          </li>
+          <li class="nav-item dropdown-item">
+            <p>Padel</p>
+          </li>
+    </ul>
+      <ul class="nav">
+        <li class="nav-item ms-4 col-3">
+          <strong>Sconti per lui</strong>
+        </li>
+        <li class="nav-item dropdown-item">
+          <p>Tutti</p>
+        </li>
+        <li class="nav-item dropdown-item">
+          <p>Scarpe</p>
+        </li>
+        <li class="nav-item dropdown-item">
+          <p>Abbigliamento</p>
+        </li>
+        <li class="nav-item dropdown-item">
+          <p>Accessori</p>
+        </li>
+      </ul>
+        <ul class="nav">
+          <li class="nav-item ms-4 col-3">
+            <strong>Sconti per lei</strong>
+          </li>
+          <li class="nav-item dropdown-item">
+            <p>Tutti</p>
+          </li>
+          <li class="nav-item dropdown-item">
+            <p>Scarpe</p>
+          </li>
+          <li class="nav-item dropdown-item">
+            <p>Abbigliamento</p>
+          </li>
+          <li class="nav-item dropdown-item">
+            <p>Accessori</p>
+          </li>
+        </ul>
+    <ul class="nav">
+      <li class="nav-item ms-4 col-3">
+        <strong>Sconti per bambini</strong>
+      </li>
+      <li class="nav-item dropdown-item">
+        <p>Tutti</p>
+      </li>
+      <li class="nav-item dropdown-item">
+        <p>Scarpe</p>
+      </li>
+      <li class="nav-item dropdown-item">
+        <p>Abbigliamento</p>
+      </li>
+      <li class="nav-item dropdown-item">
+        <p>Accessori</p>
+      </li>
+</ul>
+  </div>
+  </ng-container>
+   <!--##-->

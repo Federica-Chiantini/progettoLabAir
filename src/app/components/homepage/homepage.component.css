@@ -1,0 +1,42 @@
+.posizione{
+    position: absolute;
+    bottom: 2.5vh;
+    left: 2vw;
+}
+
+.grandezzaTesto {
+    font-size: 1rem;
+}
+
+
+
+
+@media screen and (min-width: 403px) {
+    .posizione{
+        bottom: 3vh;
+    }
+
+    .grandezzaTesto {
+        font-size: 1.2rem;
+    }
+}
+
+@media screen and (min-width: 547px) {
+    .posizione{
+        bottom: 4vh;
+    } 
+
+    .grandezzaTesto {
+        font-size: 1.5rem;
+    }
+}
+
+@media screen and (min-width: 951px) {
+    .posizione{
+        bottom: 5vh;
+    }
+
+    .grandezzaTesto {
+        font-size: 2rem;
+    }
+}

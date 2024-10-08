@@ -1,0 +1,17 @@
+<div class="card mb-3 position-absolute top-0 end-0 me-2 posizioneGrandezzaCarrello altezzaFissa" *ngIf="carrello.apriFinestra">
+<div class="container">
+<div class="row row-cols-md-2 justify-content-between align-items-center d-flex me-2 pt-2">
+  <h6 class="text-success text-star col-10 order-2 order-md-1">Aggiunto al carrello</h6>
+  <p class="btn text-danger text-end col order-1 order-md-2" (click)="chiudiFinestra()">X</p>
+  </div>
+        <div *ngFor="let i of carrello.carrelloScarpe">
+          <!--card della scarpa-->
+            <app-card-scarpa-carrello [item]="i"></app-card-scarpa-carrello>
+            <!--##-->
+        </div>
+        <div class="row justify-content-between p-2">
+            <a routerLink="pagamento" class="col btn btn-dark btn-lg color-light me-1 mb-1" (click)="chiudiFinestra()">pagamento</a>
+            <a routerLink="carrello" class="col btn btn-light btn-lg color-dark border border-dark-subtle mb-1" (click)="chiudiFinestra()">carrello</a>
+        </div>
+</div>
+  </div>

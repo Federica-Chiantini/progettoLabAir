@@ -1,0 +1,268 @@
+<div class="mx-auto my-5 col-4 border p-2 w-50">
+              <!--intestazione login/signin-->
+    <div class="row row-cols-2 justify-content-start">
+      <div class="col-2">
+        <h4 class="bi bi-dribbble" style="font-size: 2rem;"></h4>
+      </div>
+      <div class="col-3">
+        <img src="../../../assets/images/logo.png" class="w-100 img-fluid" alt="logo">
+      </div>
+                  <!--###-->
+    </div>
+
+  <div *ngIf="vecchioUtente" class="w-75 mx-auto">
+        <h4 class="mt-4 mb-2">Accedi al tuo profilo</h4>
+        <h6> <span><i class="bi bi-geo-alt"></i></span> Italia</h6>
+        <!--login-->
+        <form
+          [formGroup]="loginForm"
+          (ngSubmit)="trovaUtente()"
+        >
+          <div class="w-75 mx-auto my-3">
+            <label for="email" class="form-label text-secondary"
+              >Email:</label
+            >
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              name="email"
+              formControlName="email"
+              [ngClass]="{
+                'is-invalid':
+                  loginForm.get('email')!.touched &&
+                  loginForm.get('email')!.invalid,
+                'is-valid': loginForm.get('email')!.valid
+              }"
+            />
+        </div>
+        <div class="w-75 mx-auto my-3">
+          <label for="password" class="form-label text-secondary"
+            >Password:</label
+          >
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            name="password"
+            formControlName="password"
+            [ngClass]="{
+                'is-invalid':
+                  loginForm.get('password')!.touched &&
+                  loginForm.get('password')!.invalid,
+                'is-valid': loginForm.get('password')!.valid
+              }"
+          />
+          </div>
+          <div class="my-3">
+                <!--cambia a sezione signin-->
+            <h6 class="text-muted">Non sei gia' iscritto? <span class="text-warning" (click)="cambiaProfilo()" style="cursor: pointer;">clicca qui</span> per iscriverti.</h6>
+          </div>
+    <div>
+              <button
+                type="submit"
+                class="btn btn-dark d-block ms-auto mb-2"
+                [disabled]="loginForm.invalid"
+                style="max-width: 17vw;"
+              >
+                LOGIN
+              </button>
+    </div>
+        </form>
+        <!--##-->
+  </div>
+  
+  <div *ngIf="!vecchioUtente" class="p-2">
+    <h4 class="mt-4 mb-2">Benvenuto, nuovo utente</h4>
+        <h6> <span><i class="bi bi-geo-alt"></i></span> Italia</h6>
+        <!--signin-->
+      <form [formGroup]="formNuovoUtente" (ngSubmit)="registraUtente()" class="my-4 mx-auto">
+        <div class="row row-cols-1 row-cols-lg-2 mb-1 g-1">
+            <div class="col">
+                <input type="text" class="form-control" id="nome" placeholder="Nome" formControlName="nome" [ngClass]="{
+                  'is-invalid':
+                  formNuovoUtente.get('nome')!.invalid && formNuovoUtente.get('nome')!.touched,
+                  'is-valid': formNuovoUtente.get('nome')!.valid && formNuovoUtente.get('nome')!.touched
+                }">
+                 <!--msg errore-->
+                 <ng-container *ngIf="formNuovoUtente.get('nome')!.touched && formNuovoUtente.get('nome')!.errors">
+                  <div class="text-danger" *ngIf="formNuovoUtente.get('nome')!.errors">Il nome deve essere lungo almeno 3 caratteri</div>
+                </ng-container>
+                <!--###-->
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" id="cognome" placeholder="Cognome" formControlName="cognome" [ngClass]="{
+                  'is-invalid':
+                  formNuovoUtente.get('cognome')!.invalid && formNuovoUtente.get('cognome')!.touched,
+                  'is-valid': formNuovoUtente.get('cognome')!.valid && formNuovoUtente.get('cognome')!.touched
+                }">
+                <!--msg errore-->
+                 <ng-container *ngIf="formNuovoUtente.get('cognome')!.touched && formNuovoUtente.get('cognome')!.errors">
+                  <div class="text-danger" *ngIf="formNuovoUtente.get('nome')!.errors">Il nome deve essere lungo almeno 4 caratteri</div>
+                </ng-container>
+                <!--###-->
+              </div>
+        </div>
+        <!--##-->
+        <!--form email e tel-->
+        <div class="row row-cols-1 row-cols-md-2 g-1 mb-3">
+          <div class="col col-md-12">
+              <input type="email" class="form-control" id="email" placeholder="email" formControlName="email" [ngClass]="{
+                'is-invalid':
+                formNuovoUtente.get('email')!.invalid && formNuovoUtente.get('email')!.touched,
+                'is-valid': formNuovoUtente.get('email')!.valid && formNuovoUtente.get('email')!.touched
+              }">
+              <!--msg errore-->
+               <ng-container *ngIf="formNuovoUtente.get('email')!.touched && formNuovoUtente.get('email')!.errors">
+                <div class="text-danger" *ngIf="formNuovoUtente.get('email')!.errors">Inserisci un email corretta</div>
+              </ng-container>
+              <!--###-->
+            </div>
+                  <!--password-->
+        <div class="col-6">
+          <input type="password" class="form-control" id="password" placeholder="password" formControlName="password" [ngClass]="{
+            'is-invalid':
+            formNuovoUtente.get('password')!.invalid && formNuovoUtente.get('password')!.touched,
+            'is-valid': formNuovoUtente.get('password')!.valid && formNuovoUtente.get('password')!.touched
+          }">
+          <!--msg errore-->
+           <ng-container *ngIf="formNuovoUtente.get('password')!.touched && formNuovoUtente.get('password')!.errors">
+            <div class="text-danger" *ngIf="formNuovoUtente.get('password')!.errors">Inserisci una passord di almeno 4 caratteri</div>
+          </ng-container>
+          <!--###-->
+        </div>
+            <div class="col-6">
+              <input type="tel" class="form-control" id="tel" placeholder="tel" formControlName="tel" [ngClass]="{
+                'is-invalid':
+                formNuovoUtente.get('tel')!.invalid && formNuovoUtente.get('tel')!.touched,
+                'is-valid': formNuovoUtente.get('tel')!.valid && formNuovoUtente.get('tel')!.touched
+              }">
+              <!--msg errore-->
+               <ng-container *ngIf="formNuovoUtente.get('tel')!.touched && formNuovoUtente.get('tel')!.errors">
+                <div class="text-danger" *ngIf="formNuovoUtente.get('tel')!.errors">Inserisci un numero di telefono valido</div>
+              </ng-container>
+              <!--###-->
+            </div>
+      </div>
+      <!--##-->
+      <!--indirizzo-->
+      <div class="row row-cols-1 row-cols-lg-2 g-1 mb-3">
+          <div class="col col-lg-10">
+            <input
+              type="text"
+              id="via"
+              placeholder="Via e civico"
+              class="form-control"
+              formControlName="via"
+              [ngClass]="{
+                'is-invalid':
+                formNuovoUtente.get('via')!.invalid && formNuovoUtente.get('via')!.touched,
+                'is-valid': formNuovoUtente.get('via')!.valid && formNuovoUtente.get('via')!.touched
+              }"
+            />
+             <!--msg errore-->
+            <ng-container *ngIf="formNuovoUtente.get('via')!.touched && formNuovoUtente.get('via')!.errors">
+             <div class="text-danger" *ngIf="formNuovoUtente.get('via')!.errors">Inserisci una via di almeno 6 caratteri</div></ng-container>
+            <!--###-->
+          </div>
+          <div class="col col-lg-2">
+            <input
+              type="text"
+              id="cap"
+              placeholder="cap"
+              class="form-control"
+              formControlName="cap"
+              [ngClass]="{
+                'is-invalid':
+                formNuovoUtente.get('cap')!.invalid && formNuovoUtente.get('cap')!.touched,
+                'is-valid': formNuovoUtente.get('cap')!.valid && formNuovoUtente.get('cap')!.touched
+              }"
+            />
+             <!--msg errore-->
+             <ng-container *ngIf="formNuovoUtente.get('cap')!.touched && formNuovoUtente.get('cap')!.errors">
+              <div class="text-danger" *ngIf="formNuovoUtente.get('cap')!.errors">Inserisci un cap valido</div>
+            </ng-container>
+             <!--###-->
+          </div>
+        </div>
+
+          <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-1 mb-3">
+          <div class="col col-sm-8">
+            <input
+              type="text"
+              id="citta"
+              placeholder="citta"
+              class="form-control"
+              formControlName="citta"
+              [ngClass]="{
+                'is-invalid':
+                formNuovoUtente.get('citta')!.invalid && formNuovoUtente.get('citta')!.touched,
+                'is-valid': formNuovoUtente.get('citta')!.valid && formNuovoUtente.get('citta')!.touched
+              }"
+            />
+             <!--msg errore-->
+             <ng-container *ngIf="formNuovoUtente.get('citta')!.touched && formNuovoUtente.get('citta')!.errors">
+              <div class="text-danger" *ngIf="formNuovoUtente.get('citta')!.errors">Inserisci una citta di almeno 2 caratteri</div>
+            </ng-container>
+             <!--###-->
+          </div>
+          <div class="col col-sm-4">
+            <input
+              type="text"
+              id="provincia"
+              placeholder="provincia"
+              class="form-control"
+              formControlName="provincia"
+              [ngClass]="{
+                'is-invalid':
+                formNuovoUtente.get('provincia')!.invalid && formNuovoUtente.get('provincia')!.touched,
+                'is-valid': formNuovoUtente.get('provincia')!.valid && formNuovoUtente.get('provincia')!.touched
+              }"
+            />
+             <!--msg errore-->
+             <ng-container *ngIf="formNuovoUtente.get('provincia')!.touched && formNuovoUtente.get('provincia')!.errors">
+              <div class="text-danger" *ngIf="formNuovoUtente.get('provincia')!.errors">Inserisci una provincia di massimo 2 caratteri</div>
+            </ng-container>
+             <!--###-->
+          </div>
+          <div class="col col-md-12">
+            <input
+              type="text"
+              id="nazione"
+              placeholder="nazione"
+              class="form-control"
+              formControlName="nazione"
+            />
+             <!--msg errore-->
+             <ng-container *ngIf="formNuovoUtente.get('nazione')!.touched && formNuovoUtente.get('nazione')!.errors">
+              <div class="text-danger" *ngIf="formNuovoUtente.get('nazione')!.errors">Inserisci una via di almeno 2 caratteri</div>
+            </ng-container>
+             <!--###-->
+          </div>
+        </div>
+
+      <div class="my-3">
+        <h6 class="text-muted">Continuando, <a href="https://agreementservice.svs.nike.com/rest/agreement?agreementType=termsOfUse&country=IT&language=en&requestType=redirect&uxId=4fd2d5e7db76e0f85a6bb56721bd51df">accetti i termini di uso Nike</a> e confermi che hai letto la <a href="https://agreementservice.svs.nike.com/rest/agreement?agreementType=privacyPolicy&country=IT&language=en&requestType=redirect&uxId=4fd2d5e7db76e0f85a6bb56721bd51df">privacy policy di Nike</a>.</h6>
+      </div>
+      <!--cambia a sezione login-->
+      <div class="my-1">
+        <h6 class="text-muted">Hai gia' un account? <span class="text-warning" (click)="cambiaProfilo()" style="cursor: pointer;">clicca qui</span> per tornare a login.</h6>
+      </div>
+      <button
+                type="submit"
+                class="btn btn-dark d-block ms-auto mb-2"
+                [disabled]="formNuovoUtente.invalid"
+                style="max-width: 17vw;"
+              >
+                ISCRIVITI
+      </button>
+      </form>
+        <!--##-->
+      </div>
+    
+  </div>
+  
+
+  <div class="mx-auto my-5 col-4 border p-4 w-50 bg-danger-subtle" *ngIf="formInviato"> <!--messaggio di errore-->
+        <h4 class="text-danger p-3 text-center">{{messaggio}}</h4>  
+  </div>

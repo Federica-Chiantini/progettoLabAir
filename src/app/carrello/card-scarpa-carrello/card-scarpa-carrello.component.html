@@ -1,0 +1,49 @@
+<div *ngIf="cardScarpa" class="border-bottom mt-2 p-2">
+  <div class="mb-3 border-light">
+    <div class="row g-0">
+      <div class="col-md-4 me-2">
+        <img
+          [src]="cardScarpa.immagine"
+          class="img-fluid rounded-start"
+          [alt]="cardScarpa.nome"
+        />
+      </div>
+      <div class="col-md">
+        <div class="card-body row">
+          <div class="col-md-8">
+            <h4 class="card-title">{{ cardScarpa.nome }}</h4>
+            <h5 class="card-text">{{ cardScarpa.categoria }}</h5>
+            <h6 class="card-text">{{ cardScarpa.colore }}</h6>
+            <div class="d-flex justify-content-start">
+                <p class="card-text me-3"><span class="text-muted">Taglia </span>{{ cardScarpa.taglia }}</p>
+                <span class="text-muted me-1">Quantita' </span>
+                <select [formControl]="select" (click)="modificaQuantita(select, cardScarpa)">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+            <p class="card-text">
+              <a href="#" class="text-body-secondary">Opzione regalo</a>
+            </p>
+            <div class="d-flex justify-content-start">
+            <i class="bi bi-heart fs-4 me-2" style="cursor: pointer;"></i>
+            <i class="bi bi-trash  fs-4" (click)="elimina(cardScarpa)" style="cursor: pointer;"></i>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card-body">
+              <h4 class="card-title text-end">{{ cardScarpa.prezzo * cardScarpa.quantita| currency:'EUR' }}</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mt-1">
+    <p class="text-muted">Ritiro gratuito</p>
+    <a href="#" class="text-muted">Trova un negozio</a>
+    </div>
+</div>

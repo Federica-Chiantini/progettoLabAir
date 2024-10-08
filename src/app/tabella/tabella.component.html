@@ -1,0 +1,19 @@
+<table class="table table-borderless p-2 mb-1">
+  <!--COMPONENTE STANDALONE-->
+    <thead>
+                      <tr>
+                        <th><h5>Subtotale</h5></th>
+                        <td><h5 class="text-secondary">{{this.prezzo | currency:'EUR' }}</h5></td>
+                      </tr>
+                      <tr>
+                        <th><h5 class="pb-2">Costi di spedizione</h5></th>
+                        <td><h5 class="pb-2 text-secondary">{{spedizione | number | currency: 'EUR'}}</h5></td>
+                      </tr>
+    </thead>
+    <tbody class="border-top">
+                      <tr>
+                        <th><h5 class="py-3">Totale</h5></th>
+                        <td><h5 class="py-3 text-secondary">{{this.prezzo + spedizione | number:'1.2-2'| currency:'EUR' }}</h5></td>
+                      </tr>
+    </tbody>
+              </table>

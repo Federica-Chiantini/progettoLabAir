@@ -1,0 +1,125 @@
+<ng-container *ngIf="scarpe.length !== 0">
+
+  <div class="row">
+      <!--filtri-->
+    <nav class="nav flex-column" class="col-3 col-md-2 mt-2">
+      <h3>Ricerca:</h3>
+      <ul class="nav navbar-nav border-end" *ngIf="!this.filtroApplicato">
+        <li class="nav-item dropdown">
+          <a class="nav-link" data-bs-toggle="dropdown" href="#"
+            >Categorie</a
+          >
+          <ul class="dropdown-menu">
+            <li *ngFor="let scarpa of arrayCategorie">
+              <a *ngIf="scarpa !== 'Trail Running'"
+                class="dropdown-item"
+                [routerLink]="['categoria/' + scarpa]"
+                >{{ scarpa }}</a
+              >
+              <a *ngIf="scarpa === 'Trail Running'"
+              class="dropdown-item"
+              routerLink="categoria/TrailRunning"
+              >{{ scarpa }}</a
+            >
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link" data-bs-toggle="dropdown" href="#"
+            >Prezzo</a
+          >
+          <ul class="dropdown-menu">
+            <li>
+              <a
+                class="dropdown-item"
+                (click)="selezionaFiltroNumero(0, 100)"
+                > minore di &euro;100</a
+              >
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                (click)="selezionaFiltroNumero(100, 150)"
+                > minore di &euro;150</a
+              >
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                (click)="selezionaFiltroNumero(150, 200)"
+                > minore di &euro;200</a
+              >
+            </li>
+            
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link" data-bs-toggle="dropdown" href="#"
+            >Colore</a
+          >
+          <ul class="dropdown-menu">
+            <li *ngFor="let c of arrayColori">
+              <a
+                class="dropdown-item"
+                (click)="selezionaFiltroColore(c)"
+                ><span class="text-dark">{{c}}</span></a
+              >
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                (click)="selezionaFiltroColore('bianco')"
+                ><span class="text-secondary">Bianco</span></a
+              >
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                (click)="selezionaFiltroColore('nero')"
+                ><span class="text-dark">Nero</span></a
+              >
+            </li>
+            
+          </ul>
+        </li>
+      </ul>
+      <div *ngIf="filtroPrezzo || filtroColore" class="border m-2 p-1">
+        <p *ngIf="filtroPrezzo">filtro selezionato per prodotti tra <span class="text-warning">{{prezzoMinimo | currency: 'EUR'}} - {{prezzoMassimo | currency: 'EUR'}}</span></p>
+        <p *ngIf="filtroColore">filtro selezionato per prodotti di colore <span class="text-warning">{{coloreSelezionato}}</span></p>
+        <button class="btn btn-secondary my-2" (click)="filtraProdotti()">Filtra per {{ filtroColore ? 'colore' : 'prezzo'}}</button>
+      </div>
+
+      <button *ngIf="this.filtroApplicato" class="btn btn-primary mt-4" (click)="annullaFiltro()">Annulla filtro</button>
+    </nav>
+      <!--##-->
+    
+    <div class="col">
+      <h2 class="p-2 text-center">{{titolo}}({{quantita}})</h2>
+        <!--scarpe-->
+      <div>
+      <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-2">
+        <!--card singola scarpa-->
+        <app-card-selezione-scarpa class="col mb-3" *ngFor="let scarpa of scarpe; trackBy: trackByFn" [s]="scarpa"></app-card-selezione-scarpa>
+        <!--##-->
+      </div>
+    </div>
+      <!--##-->
+  </div>
+  </div>
+
+    <!-- Bottone per caricare altri prodotti -->
+    <div *ngIf="AltriProdotti_inLista" class="row">
+      <button class="btn btn-primary mx-auto my-2" (click)="Carica_Prodotti()" style="max-width: 12rem;">Carica altri prodotti</button>
+    </div>
+  
+    <!-- Indicatore di caricamento -->
+    <div *ngIf="scaricando" class="row">
+      <div class="spinner-border text-primary mx-auto my-2" role="status">
+      </div>
+    </div>
+</ng-container>
+
+  <!--nessuna lista trovata-->
+<div class="my-5" *ngIf="scarpe.length === 0">
+  <p-messages [(value)]="messages" [closable]="false" />
+</div>
