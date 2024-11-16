@@ -6,6 +6,7 @@ import { AreaUtenteComponent } from './area-utente/area-utente.component';
 import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CardScarpaCarrelloComponent } from '../card-scarpa-carrello/card-scarpa-carrello.component';
+import { TabellaComponent } from "../tabella/tabella.component";
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { CardScarpaCarrelloComponent } from '../card-scarpa-carrello/card-scarpa
     CommonModule,
     LoginRoutingModule,
     ReactiveFormsModule,
-    CardScarpaCarrelloComponent
-  ]
+    CardScarpaCarrelloComponent,
+    TabellaComponent
+]
 })
 export class LoginModule { }
